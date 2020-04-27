@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=myapp
+    volumes:
+        - mysql_volume:/var/lib/mysql
+        - mysql_entrypoint:/docker-entrypoint-initdb.d
+    expose:
+      - 3306
+
+  app:
+    image: secdevoops/spring-boot-docker:0.0.1-SNAPSHOT
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "mysql"
+
+volumes:
+      mysql_volume:
+      mysql_entrypoint:
