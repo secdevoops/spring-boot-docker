@@ -1,4 +1,4 @@
-# spring-boot-basic-docker
+secdevoops-spring-boot-docker_mysql_entrypoint# spring-boot-basic-docker
 
 
 A basic Spring Boot Project with Spring Security and JWT running into a Docker container and a MySQL container.
@@ -10,28 +10,28 @@ The init_script.sql creates the user_account, role and user_account_role tables,
 
 
 ```
-mvn compile jib:dockerBuild 
+mvn compile jib:dockerBuild (-P prod)
 ```
 
 ### 2.- Create the MySQL and App containers
 
 
 ```
-docker-compose up --no-start
+docker-compose up --no-start (-f docker-compose-prod.yml)
 ```
 
 ### 3.- Copy the database init script into the docker_mysql_entrypoint volume
 
 
 ```
-sudo cp init_script.sql /var/lib/docker/volumes/docker_mysql_entrypoint/_data/
+sudo cp init_script.sql /var/lib/docker/volumes/secdevoops-spring-boot-docker_mysql_entrypoint/_data/
 ```
 
 # 4.- Run the services
 
 
 ```
-docker-compose up
+docker-compose up (-f docker-compose-prod.yml)
 ```
 
 

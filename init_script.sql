@@ -30,7 +30,6 @@ CREATE TABLE `user_account_role` (
 insert into role(rolename,description) values('ADMIN', 'Admin Role');
 insert into role(rolename,description) values('USER', 'User Role');
 
---password 123456
 insert into user_account(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) 
 values('admin','$2a$10$EblZqNptyYvcLm/VwDCVAuBjzZOI7khzdyGPBr08PpIi0na624b8.', true, true, true, true);
 
